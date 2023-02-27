@@ -1,0 +1,36 @@
+.avtar{
+  margin-left: 15px;
+  cursor: pointer;          
+}
+
+.drawer-container{
+  width: 350px;
+  padding: 25px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.propic{
+ width: 100%;
+ text-align: center;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.avtar-pic{
+  width: 200px !important;
+  height: 200px !important;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.userdetail{
+  width: 100%;
+  font-size: 30px;
+  font-weight: 500;
+  word-wrap: break-word;
+  margin-top: 10px;
+}

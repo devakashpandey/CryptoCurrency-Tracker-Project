@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';  // for navigation
 import { ThemeProvider, createTheme } from '@mui/material/styles';  // dark mode hooks
 import { UseCryptoValue } from "../context/CryptoContext"
 import AuthModal from './Authentication/AuthModal';
+import UserSidebar from './Authentication/UserSidebar';
 
 const currencies = [
                       {
@@ -26,7 +27,7 @@ const currencies = [
 const Header = () => {
 
   const navigate = useNavigate()
-  const { currency, setCurrency } = UseCryptoValue()
+  const { currency, setCurrency, user } = UseCryptoValue()
 
   const myLogo = () => {
     navigate("/")
@@ -71,7 +72,7 @@ return (
          </Box>
          {/*------ select option end ------*/}
 
-         <AuthModal />
+         {user ? <UserSidebar /> :   <AuthModal /> }
         
         </Toolbar>
         </Container>
