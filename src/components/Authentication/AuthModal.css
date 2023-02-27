@@ -1,11 +1,18 @@
-.modal-btn{
+.modal-btn {
   padding: 11px 21px;
   font-size: 14px;
   margin-left: 10px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  background-color:  rgb(7, 195, 237);
+  background-color: rgb(7, 195, 237);
   text-transform: uppercase;
 }
 
+@media (max-width: 500px) {
+  .modal-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+    /* text-transform: capitalize; */
+  }
+}
