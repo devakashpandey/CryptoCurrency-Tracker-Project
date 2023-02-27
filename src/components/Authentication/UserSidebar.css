@@ -23,8 +23,8 @@
 }
 
 .avtar-pic{
-  width: 200px !important;
-  height: 200px !important;
+  width: 160px !important;
+  height: 160px !important;
   cursor: pointer;
   object-fit: contain;
 }
@@ -43,4 +43,21 @@
  margin-top: 20px !important;
  background-color: rgb(7, 195, 237) !important;
  font-size: 15px !important;
+}
+
+.watchlist{
+ flex:1;
+ width: 100%;
+ font-size: 20px;
+ margin-top: 20px;
+ padding-top: 10px; 
+ background-color: grey;
+ padding: 20px;
+ border-radius: 15px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap:12;
+ overflow: scroll;
+  
 }

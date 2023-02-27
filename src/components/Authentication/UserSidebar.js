@@ -7,6 +7,9 @@ import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { Button } from '@mui/material';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
+import { toast } from 'react-toastify';
 
 
 
@@ -56,7 +59,12 @@ setState({ ...state, [anchor]: open });
 };
 
 const logout = () => {
-  
+  signOut(auth)
+  toast.success("Logout Successfull", {
+      theme:"dark"
+  })
+ toggleDrawer()
+
 }
 
 return (
@@ -106,7 +114,7 @@ return (
                 </span>
 
                 <div className='watchlist'>
-                      
+                      <p>WatchList</p>
                 </div>
 
                 </div>
