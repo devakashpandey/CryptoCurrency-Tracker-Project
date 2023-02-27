@@ -18,6 +18,8 @@
  display: flex;
  flex-direction: column;
  align-items: center;
+ height: 94%;
+ margin-top: 10px;
 }
 
 .avtar-pic{
@@ -32,5 +34,13 @@
   font-size: 30px;
   font-weight: 500;
   word-wrap: break-word;
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+.logout-btn{
+ height: 7%;
+ width: 100% ;
+ margin-top: 20px !important;
+ background-color: rgb(7, 195, 237) !important;
+ font-size: 15px !important;
 }

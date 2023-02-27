@@ -105,9 +105,19 @@ return (
                       {user.displayName || user.email}
                 </span>
 
+                <div className='watchlist'>
+                      
                 </div>
 
-                <Button variant="contained" onClick={logout}></Button>
+                </div>
+
+                <Button 
+                variant="contained" 
+                onClick={logout}
+                className="logout-btn"
+                >
+                Log Out
+                </Button>
 
           </div>
             
