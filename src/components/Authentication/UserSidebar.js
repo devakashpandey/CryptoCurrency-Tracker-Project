@@ -43,7 +43,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const UserSidebar = () => {
   const [state, setState] = React.useState({ right: false });
 
-  const { user } = UseCryptoValue();
+  const { user, watchlist } = UseCryptoValue();
 
   console.log(user);
 

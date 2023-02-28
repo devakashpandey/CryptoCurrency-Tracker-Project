@@ -7,14 +7,17 @@ import { SingleCoin } from "../config/api";
 import CoinChart from "../components/CoinChart";
 import { numberWithCommas } from "../components/Carousel";
 import { Button, LinearProgress } from "@mui/material";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { toast } from "react-toastify";
 
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState("");
 
-  const { currency, symbol, user } = UseCryptoValue();
+  const { currency, symbol, user, watchlist } = UseCryptoValue();
+
+  const inWatchlist = watchlist.includes(coin?.id); // to check any coin is added in watchlist or not
 
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
@@ -28,6 +31,38 @@ const CoinPage = () => {
 
   const addToWatchList = async () => {
     const coinRef = doc(db, "watchlist", user.uid);
+
+    try {
+      await setDoc(coinRef, {
+        coins: watchlist ? [...watchlist, coin.id] : [coin?.id], // to adding the coin in watchlist
+      });
+
+      toast.success(`${coin.name} Added to the watchlist`, {
+        theme: "dark",
+      });
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
+  const removeFromWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+
+    try {
+      await setDoc(
+        coinRef,
+        {
+          coins: watchlist.filter((item) => item !== coin?.id),
+        },
+        { merge: "true" }
+      );
+
+      toast.success(`${coin.name} Removed from the watchlist`, {
+        theme: "dark",
+      });
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   if (!coin) return <LinearProgress />; // for loading
@@ -85,14 +120,21 @@ const CoinPage = () => {
             </span>
           </div>
 
+          {/* add to watchlist button  */}
+
           {user && (
             <Button
               variant="outlined"
               className="add-to-watchlist"
-              onClick={addToWatchList}
-              style={{ backgroundColor: "rgb(7, 195, 237)" }}
+              onClick={inWatchlist ? removeFromWatchlist : addToWatchList}
+              style={{
+                backgroundColor: inWatchlist
+                  ? "rgba(255, 68, 0, 0.850)"
+                  : "rgb(7, 195, 237)",
+                color: inWatchlist ? "white" : "black",
+              }}
             >
-              Add To Watchlist
+              {inWatchlist ? "Remove From Watchlist" : "Add To Watchlist"}
             </Button>
           )}
         </div>

@@ -45,8 +45,7 @@ h4 {
 
 .add-to-watchlist {
   width: 95%;
-  height: 45px;
-  color: black !important;
+  height: 40px;
 }
 
 @media (max-width: 800px) {
