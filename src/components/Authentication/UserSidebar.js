@@ -10,6 +10,10 @@ import { Button } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
+import { numberWithCommas } from "../Carousel";
+import { MdDelete } from "react-icons/md";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -43,7 +47,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const UserSidebar = () => {
   const [state, setState] = React.useState({ right: false });
 
-  const { user, watchlist } = UseCryptoValue();
+  const { user, watchlist, coins, symbol } = UseCryptoValue();
 
   console.log(user);
 
@@ -64,6 +68,26 @@ const UserSidebar = () => {
       theme: "dark",
     });
     toggleDrawer();
+  };
+
+  const removeFromWatchlist = async (coin) => {
+    const coinRef = doc(db, "watchlist", user.uid);
+
+    try {
+      await setDoc(
+        coinRef,
+        {
+          coins: watchlist.filter((item) => item !== coin?.id),
+        },
+        { merge: "true" }
+      );
+
+      toast.success(`${coin.name} Removed from the watchlist`, {
+        theme: "dark",
+      });
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   return (
@@ -110,7 +134,30 @@ const UserSidebar = () => {
                 </span>
 
                 <div className="watchlist">
-                  <p>WatchList</p>
+                  <p>Watchlist</p>
+
+                  {coins.map((coin) => {
+                    if (watchlist.includes(coin.id)) {
+                      return (
+                        <div className="watchlist-coin">
+                          <span>{coin.name}</span>
+
+                          <span style={{ display: "flex", gap: 5 }}>
+                            {symbol}{" "}
+                            {numberWithCommas(coin?.current_price.toFixed(2))}
+                            <MdDelete
+                              style={{
+                                cursor: "pointer",
+                                marginTop: 2,
+                                fontSize: 21,
+                              }}
+                              onClick={() => removeFromWatchlist(coin)}
+                            />
+                          </span>
+                        </div>
+                      );
+                    }
+                  })}
                 </div>
               </div>
 
