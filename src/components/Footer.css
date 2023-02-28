@@ -1,0 +1,28 @@
+.footer {
+  background-color: rgb(12, 12, 12);
+  color: white;
+  height: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.myname {
+  font-weight: 700;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.info {
+  font-size: 17px;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+}
