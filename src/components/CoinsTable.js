@@ -3,7 +3,6 @@ import "./CoinsTable.css";
 import { UseCryptoValue } from "../context/CryptoContext";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Container, Pagination } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import LinearProgress from "@mui/material/LinearProgress";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
@@ -15,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 import { numberWithCommas } from "./Carousel";
 
 const CoinsTable = () => {
-  const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
   const { symbol, coins, loading } = UseCryptoValue();
@@ -27,6 +25,10 @@ const CoinsTable = () => {
       mode: "dark",
     },
   });
+
+  // if (Math.random() > 0.5) {
+  //   return new Error("Test Error Boundary");
+  // }
 
   return (
     <>
