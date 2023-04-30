@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Carousel.css";
-import { TrendingCoins } from "../config/api";
-import { UseCryptoValue } from "../context/CryptoContext";
+import { TrendingCoins } from "../../config/api";
+import { UseCryptoValue } from "../../context/CryptoContext";
 import AliceCarousel from "react-alice-carousel";
 import { Link } from "react-router-dom";
 

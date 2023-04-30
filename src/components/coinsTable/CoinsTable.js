@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CoinsTable.css";
-import { UseCryptoValue } from "../context/CryptoContext";
+import { UseCryptoValue } from "../../context/CryptoContext";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Container, Pagination } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -11,7 +11,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useNavigate } from "react-router-dom";
-import { numberWithCommas } from "./Carousel";
+import { numberWithCommas } from "../carousel/Carousel";
 
 const CoinsTable = () => {
   const [page, setPage] = useState(1);

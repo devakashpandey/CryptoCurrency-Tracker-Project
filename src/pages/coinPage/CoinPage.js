@@ -1,15 +1,17 @@
 import React, { Suspense, useEffect, useState } from "react";
 import "./CoinPage.css";
 import { useParams } from "react-router-dom";
-import { UseCryptoValue } from "../context/CryptoContext";
+import { UseCryptoValue } from "../../context/CryptoContext";
 import axios from "axios";
-import { SingleCoin } from "../config/api";
-import { numberWithCommas } from "../components/Carousel";
+import { SingleCoin } from "../../config/api";
+import { numberWithCommas } from "../../components/carousel/Carousel";
 import { Button, CircularProgress, LinearProgress } from "@mui/material";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../config/firebase";
 import { toast } from "react-toastify";
-const CoinChart = React.lazy(() => import("../components/CoinChart"));
+const CoinChart = React.lazy(() =>
+  import("../../components/coinChart/CoinChart.js")
+);
 
 const CoinPage = () => {
   const { id } = useParams();

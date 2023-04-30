@@ -2,9 +2,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { CoinList } from "../config/api";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../config/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../config/firebase";
 import { toast } from "react-toastify";
 
 const CryptoContext = createContext();
@@ -66,8 +66,8 @@ const ContextProvider = ({ children }) => {
     <CryptoContext.Provider
       value={{
         currency,
-        symbol,
         setCurrency,
+        symbol,
         coins,
         loading,
         user,

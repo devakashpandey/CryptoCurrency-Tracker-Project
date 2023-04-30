@@ -1,19 +1,18 @@
 import React from "react";
 import "./UserSidebar.css";
 import Drawer from "@mui/material/Drawer";
-import { UseCryptoValue } from "../../context/CryptoContext";
+import { UseCryptoValue } from "../../../context/CryptoContext";
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
 import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
 import { toast } from "react-toastify";
-import { numberWithCommas } from "../Carousel";
+import { numberWithCommas } from "../../carousel/Carousel";
 import { MdDelete } from "react-icons/md";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db, auth } from "../../../config/firebase";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
