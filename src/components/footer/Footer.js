@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="info">
           Copyright © 2023 - All Rights Reserved
           <center>
-            <a href="https://devakashpandey.netlify.app" target="_blank">
+            <a href="https://iamakashpandey.netlify.app" target="_blank">
               <b style={{ color: "white" }}>Akash Pandey</b>
             </a>
           </center>
